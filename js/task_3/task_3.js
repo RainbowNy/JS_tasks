@@ -4,9 +4,10 @@ function fromGridToArray(grid) {
     if(checkForValidGrid(grid)) {
         for (const rowOfCells of grid) {
             for (const cell of rowOfCells) {
-                arrayOfCells.push(cell);
+                if(cell != null){
+                    arrayOfCells.push(cell);
+                }
             }
-            arrayOfCells.push("split");
         }
     }
 
@@ -14,13 +15,13 @@ function fromGridToArray(grid) {
 }
 
 function checkForValidGrid(grid) {
-    if (typeof (grid) != "object" || grid.length === undefined || grid.length === 0) {
+    if (typeof (grid) != "object" || !grid.length) {
         alert('Invalid format of grid');
         return false;
     }
 
     for (let row of grid) {
-        if (typeof (row) != "object" || row.length === undefined || row.length === 0) {
+        if (typeof (row) != "object" || !row.length) {
             alert(`Invalid format of row at ${grid.indexOf(row) + 1} position`);
             return false;
         }
