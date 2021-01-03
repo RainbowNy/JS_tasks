@@ -7,8 +7,10 @@ function fromArrayToGrid(arrayOfCells) {
     let numberOfRows;
 
     if (checkForValidArrayOfCells(arrayOfCells)) {
-        numberOfColumns = arrayOfCells.reduce((max, cell) => (cell.left + cell.width) > max ? cell.left + cell.width : max, 0);
-        numberOfRows = arrayOfCells.reduce((max, cell) => (cell.top + cell.height) > max ? cell.top + cell.height : max, 0);
+        numberOfColumns = Math.max(...arrayOfCells.map(cell => cell.left + cell.width));
+        numberOfRows = Math.max(...arrayOfCells.map(cell => cell.top + cell.height));
+
+        arrayOfCells.sort(compareCells);
 
         for (let row = 0; row < numberOfRows; row++) {
             for (let column = 0; column < numberOfColumns; column++) {
@@ -40,4 +42,26 @@ function checkForValidArrayOfCells(arrayOfCells) {
     }
 
     return true;
+}
+
+function compareCells(firstCell, secondCell) {
+    if (firstCell.top < secondCell.top) {
+        return -1;
+    }
+
+    if (firstCell.top === secondCell.top && firstCell.left < secondCell.left) {
+        return -1;
+    }
+
+    if (firstCell.top === secondCell.top && firstCell.left === secondCell.left) {
+        return 0;
+    }
+
+    if (firstCell.top > secondCell.top) {
+        return 1;
+    }
+
+    if (firstCell.top === secondCell.top && firstCell.left > secondCell.left) {
+        return 1;
+    }
 }
