@@ -9,8 +9,12 @@ function repaintGridOnPage(grid) {
         for (let row of grid) {
             rowOfGrid = document.createElement('tr');
             for (let elem of row) {
-                cellOfGrid = document.createElement('td');
-                rowOfGrid.appendChild(cellOfGrid);
+                if (elem) {
+                    cellOfGrid = document.createElement('td');
+                    cellOfGrid.colSpan = elem.width;
+                    cellOfGrid.rowSpan = elem.height;
+                    rowOfGrid.appendChild(cellOfGrid);
+                }
             }
             gridOnPage.appendChild(rowOfGrid);
         }
