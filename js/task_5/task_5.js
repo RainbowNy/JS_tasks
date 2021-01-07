@@ -1,5 +1,5 @@
 function repaintGridOnPage(grid) {
-    const gridOnPage = document.getElementById('grid');
+    const gridOnPage = getGridFromPage();
     let rowOfGrid;
     let cellOfGrid;
 
@@ -21,6 +21,14 @@ function repaintGridOnPage(grid) {
     }
 }
 
+function getGridFromPage() {
+    return document.getElementById('grid');
+}
+
+function clearGridOnPage(gridOnPage) {
+    gridOnPage.innerHTML = '';
+}
+
 function checkGridForValidData(grid) {
     if (typeof grid != 'object' || !grid.length) {
         alert('Invalid grid');
@@ -28,8 +36,4 @@ function checkGridForValidData(grid) {
     }
 
     return true;
-}
-
-function clearGridOnPage(gridOnPage) {
-    gridOnPage.innerHTML = '';
 }
