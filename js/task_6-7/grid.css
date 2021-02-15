@@ -1,0 +1,62 @@
+.grid {
+    border: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.grid td{
+    width: 300px;
+    height: 300px;
+
+    margin: 5px;
+    padding: 0;
+
+    border: solid black 1px;
+    border-radius: 5px;
+}
+
+.btn {
+    margin: 5px;
+
+    border: hidden;
+    border-radius: 5px;
+}
+
+.btn-choose {
+    background-color: antiquewhite;
+}
+
+.selector {
+    position: absolute;
+
+    margin: 5px;
+
+    border: 1px black solid;
+    border-radius: 5px;
+
+    background-color: white;
+
+    z-index: 1000;
+
+    transition: all .5s;
+}
+
+.template {
+
+}
+
+.cell {
+    width: 20px;
+    height: 13px;
+
+    border: 1px gray solid;
+    border-radius: 5px;
+
+    padding: 0;
+}
+
+.selected {
+    background-color: royalblue;
+
+    transition: all .5s;
+}
